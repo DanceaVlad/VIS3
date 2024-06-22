@@ -1,0 +1,11 @@
+code;name;;en_name;de_desc;de_link;en_desc;en_link;de_syn;en_syn
+B00-1;Burgenland <AT11>;;Burgenland <AT11>;;;;;;
+B00-2;Kärnten <AT21>;;Carinthia <AT21>;;;;;;
+B00-3;Niederösterreich <AT12>;;Lower Austria <AT12>;;;;;;
+B00-4;Oberösterreich <AT31>;;Upper Austria <AT31>;;;;;;
+B00-5;Salzburg <AT32>;;Salzburg <AT32>;;;;;;
+B00-6;Steiermark <AT22>;;Styria <AT22>;;;;;;
+B00-7;Tirol <AT33>;;Tyrol <AT33>;;;;;;
+B00-8;Vorarlberg <AT34>;;Vorarlberg <AT34>;;;;;;
+B00-9;Wien <AT13>;;Vienna <AT13>;;;;;;
+B00-0;Nicht klassifizierbar <0>;;Not classifiable <0>;;;;;;
