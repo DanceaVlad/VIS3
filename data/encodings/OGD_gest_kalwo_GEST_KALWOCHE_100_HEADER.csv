@@ -1,0 +1,6 @@
+code;name;en_name;;;;;;;
+C-KALWOCHE-0;Kalenderwoche des Sterbedatums;Calendar week;;;;;;;
+C-B00-0;Bundesland des Wohnorts des Verstorbenen;Province (NUTS 2 unit) of deceased;;;;;;;
+C-ALTERGR65-0;Altersgruppe des Verstorbenen;Age group of deceased;;;;;;;
+C-C11-0;Geschlecht des Verstorbenen;Gender of deceased;;;;;;;
+F-ANZ-1;Anzahl der Sterbefälle;Number of deaths;;;;;;;
