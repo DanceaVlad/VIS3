@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow: hidden;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.title-container {
+    width: 100vw;
+
+    padding: 1vh 1vw;
+
+    background-color: rgb(168, 168, 168);
+}
+
+.title {
+    line-height: 5vh;
+    font-size: 2rem;
+}
+
+.period {
+    font-size: 1.5rem;
+}
