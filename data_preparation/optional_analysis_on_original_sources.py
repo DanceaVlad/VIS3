@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 
 
-tests_file_name = 'data/datasets/timeline-faelle-bundeslaender.csv'
-deaths_file_name = 'data/datasets/OGD_gest_kalwo_GEST_KALWOCHE_100.csv'
+tests_file_name = 'data/datasets/optional_original_sources/timeline-faelle-bundeslaender.csv'
+deaths_file_name = 'data/datasets/optional_original_sources/deaths_austria/OGD_gest_kalwo_GEST_KALWOCHE_100.csv'
     
 df_tests = pd.read_csv(tests_file_name, sep=';')
 df_deaths = pd.read_csv(deaths_file_name, sep=';')
