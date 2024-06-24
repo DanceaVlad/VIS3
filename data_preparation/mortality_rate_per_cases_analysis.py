@@ -41,7 +41,7 @@ print(df_deaths.head())
 
 for col in df_deaths.columns[1:]:
     df_to_export = df_deaths[['Datum', col]]
-    filename = convert_umlauts(f'deaths_per_1000_cases_cumulative_{col}.csv')
+    filename = convert_umlauts(f'mortality_rate_per_1000_cases_{col}.csv')
     df_to_export.to_csv(f'data/cleaned_csvs/{filename}', index=False, sep=';', quotechar='"', quoting=csv.QUOTE_ALL)
 
 print("Done exporting files")
