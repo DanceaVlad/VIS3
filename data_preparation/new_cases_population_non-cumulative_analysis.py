@@ -59,7 +59,7 @@ mean_population.columns = [col.replace('01.01.', '') for col in mean_population.
 mean_population.drop(columns=[mean_population.columns[-1]], inplace=True)
 print(mean_population)
 
-df_cases['Year'] = str(df_cases['Datum'].get(0).year)
+df_cases['Year'] = df_cases['Datum'].dt.year.astype(str)
 print(df_cases.head())
 
 for col in df_cases.columns[1:-1]:

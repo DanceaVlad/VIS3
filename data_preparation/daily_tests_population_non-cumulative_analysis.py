@@ -88,7 +88,7 @@ mean_population.columns = [col.replace('01.01.', '') for col in mean_population.
 mean_population.drop(columns=[mean_population.columns[-1]], inplace=True)
 print(mean_population)
 
-df_tests['Year'] = str(df_tests['Datum'].get(0).year)
+df_tests['Year'] = df_tests['Datum'].dt.year.astype(str)
 df_tests.columns = [col.replace('_Tests', '') for col in df_tests.columns]
 print(df_tests.head())
 
