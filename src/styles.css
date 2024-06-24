@@ -26,3 +26,11 @@ html, body {
 .period {
     font-size: 1.5rem;
 }
+
+#map {
+    background-color: blueviolet;
+}
+
+#timeline {
+    background-color: violet;
+}

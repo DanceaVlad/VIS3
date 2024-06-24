@@ -2,15 +2,14 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson@3/+esm";
 
 let bundeslanderNames;
-let bundeslanderPopulations;
+let bunderslanderDeaths;
 
-async function loadPopulation() {
+async function loadTotalDeaths() {
     try {
-        const data = await d3.csv("../data/datasets/optional_original_sources/population_by_bundesland.csv", d3.autoType);
-        console.log(data);
+        const data = await d3.csv("../data/cleaned_csvs/choropleth_deaths_per_1000_people_sum_sep_22.csv", d3.autoType);
         bundeslanderNames = data.map(d => d.Bundesland);
-        bundeslanderPopulations = data.reduce((acc, d) => {
-            acc[d.Bundesland] = d['01.01.2020'];
+        bunderslanderDeaths = data.reduce((acc, d) => {
+            acc[d.Bundesland] = d['sum_deaths_per_1000_people'];
             return acc;
         }, {});
     } catch (error) {
@@ -30,9 +29,9 @@ async function loadAustriaMap() {
         const path = d3.geoPath().projection(projection);
 
         // Define a color scale
-        const populationValues = Object.values(bundeslanderPopulations);
+        const deathValues = Object.values(bunderslanderDeaths);
         const colorScale = d3.scaleLinear()
-            .domain([d3.min(populationValues), d3.max(populationValues)])
+            .domain([d3.min(deathValues), d3.max(deathValues)])
             .range(["white", "red"]);
 
         svg.append("g")
@@ -42,21 +41,21 @@ async function loadAustriaMap() {
             .attr("d", path)
             .attr("fill", d => {
                 const bundeslandName = d.properties.name;
-                const population = bundeslanderPopulations[bundeslandName];
-                return colorScale(population);
+                const deaths = bunderslanderDeaths[bundeslandName];
+                return colorScale(deaths);
             })
             .attr("stroke", "#333");
 
         austria.features.forEach((feature) => {
             const [x, y] = projection(d3.geoCentroid(feature));
             const bundeslandName = feature.properties.name;
-            const population = bundeslanderPopulations[bundeslandName];
+            const deaths = bunderslanderDeaths[bundeslandName];
 
             svg.append("text")
                 .attr("x", x)
                 .attr("y", y)
                 .attr("dy", "0.35em")
-                .text(`${population}`)
+                .text(`${deaths.toFixed(2)}`)
                 .attr("font-size", 10)
                 .attr("text-anchor", "middle");
         });
@@ -66,7 +65,7 @@ async function loadAustriaMap() {
 }
 
 async function initialize() {
-    await loadPopulation();
+    await loadTotalDeaths();
     await loadAustriaMap();
 }
 
