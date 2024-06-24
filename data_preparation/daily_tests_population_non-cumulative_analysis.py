@@ -14,6 +14,14 @@ def convert_umlauts(filename):
     filename = unicodedata.normalize('NFKD', filename).encode('ASCII', 'ignore').decode('utf-8')
     return filename
 
+def cap_extreme_values(df, col, lower_percentile=1, upper_percentile=99):
+    # Calculate percentiles
+    lower_cap = df[col].quantile(lower_percentile / 100)
+    upper_cap = df[col].quantile(upper_percentile / 100)
+    
+    # Apply caps
+    df[col] = df[col].clip(lower=lower_cap, upper=upper_cap)
+
 
 # TODO maybe compare this with original sources
     
@@ -91,6 +99,9 @@ for col in df_tests.columns[1:-1]:
 df_tests.drop(columns=['Year'], inplace=True)
     
 print(df_tests.head())
+
+for col in df_tests.columns[1:]:
+    cap_extreme_values(df_tests, col)
 
 for col in df_tests.columns[1:]:
     df_to_export = df_tests[['Datum', col]]
